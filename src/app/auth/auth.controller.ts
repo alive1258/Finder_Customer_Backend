@@ -17,6 +17,7 @@ import { AuthType } from './enums/auth-type.enum';
 import { UserOTPDto } from './dtos/user-otp.dto';
 import { Request } from 'express';
 import { UpdateUserDto } from '../modules/users/dto/update-user.dto';
+import { ResetPasswordDto } from './dtos/reset-password.dtos';
 
 @Controller('auth')
 @ApiTags('Auth')
@@ -99,9 +100,9 @@ export class AuthController {
     description: 'Data fetched successfully.',
   })
   public resendOTP(
-    @Body() { userId, mobile }: { userId: string; mobile: string },
+    @Body() { UserId, email }: { UserId: string; email: string },
   ) {
-    return this.authService.resendOTP(userId, mobile);
+    return this.authService.resendOTP(UserId, email);
   }
 
   /**
@@ -115,10 +116,8 @@ export class AuthController {
     status: 201,
     description: 'Data fetched successfully.',
   })
-  public forgetPassword(
-    @Body() { userId, mobile }: { userId: string; mobile: string },
-  ) {
-    return this.authService.forgetPassword(userId, mobile);
+  public forgetPassword(@Body() { email }: { email: string }) {
+    return this.authService.forgetPassword(email);
   }
 
   /**
@@ -133,15 +132,12 @@ export class AuthController {
     description: 'Data fetched successfully.',
   })
   public resetPassword(
-    @Body() updateUserDto: UpdateUserDto,
+    @Body() resetPasswordDto: ResetPasswordDto,
     @Req() req: Request,
   ) {
-    const id = req.user?.sub;
-    if (!id) {
-      throw new BadRequestException('User ID is missing.');
-    }
+    const userId = req.user?.sub;
 
-    return this.authService.resetPassword(updateUserDto, id);
+    return this.authService.resetPassword(resetPasswordDto, userId ?? '');
   }
 
   /**
