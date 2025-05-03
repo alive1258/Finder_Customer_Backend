@@ -40,6 +40,8 @@ export class AccessTokenGuard implements CanActivate {
       request.path === '/api/v1/auth/refresh-token' ||
       request.path === '/api/v1/auth/sign-in' ||
       request.path === '/api/v1/auth/verify-otp' ||
+      request.path === '/api/v1/auth/forget-password' ||
+      request.path === '/api/v1/auth/reset-password' ||
       request.path === '/api/v1/auth/resend-otp'
     ) {
       return true;

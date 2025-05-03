@@ -5,11 +5,9 @@ import {
   Req,
   UnauthorizedException,
 } from '@nestjs/common';
-import jwtConfig from '../config/jwt.config';
-import { ConfigType } from '@nestjs/config';
+
 import { GenerateTokensProvider } from './generate-tokens.provider';
 import { UsersService } from 'src/app/modules/users/users.service';
-import { Request } from 'express';
 
 @Injectable()
 export class RefreshTokensProvider {
