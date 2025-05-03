@@ -27,3 +27,25 @@ export class MailTransporter {
   //   return this.transporter.sendMail(options);
   // }
 }
+
+// src/mail/providers/mailTransporter.provider.ts
+// import { Injectable } from '@nestjs/common';
+// import * as nodemailer from 'nodemailer';
+// import { SendMailOptions } from 'nodemailer';
+
+// @Injectable()
+// export class MailTransporter {
+//   private transporter = nodemailer.createTransport({
+//     host: process.env.MAIL_HOST,
+//     port: parseInt(process.env.MAIL_PORT ?? '2525', 10),
+//     secure: process.env.MAIL_SECURE === 'true',
+//     auth: {
+//       user: process.env.SMTP_USERNAME,
+//       pass: process.env.SMTP_PASSWORD,
+//     },
+//   });
+
+//   public async sendMail(options: SendMailOptions) {
+//     return this.transporter.sendMail(options);
+//   }
+// }

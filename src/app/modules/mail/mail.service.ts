@@ -4,9 +4,8 @@ import { OTP } from './entities/otp.entity';
 import { EntityManager, Repository } from 'typeorm';
 import { User } from '../users/entities/user.entity';
 import * as bcrypt from 'bcrypt';
-
-import { Transporter } from 'nodemailer';
 import { MailTransporter } from './providers/mailTransporter.provider';
+import { Transporter } from 'nodemailer';
 
 @Injectable()
 export class MailService {

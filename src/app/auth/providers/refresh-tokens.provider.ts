@@ -2,7 +2,6 @@ import {
   forwardRef,
   Inject,
   Injectable,
-  Req,
   UnauthorizedException,
 } from '@nestjs/common';
 
